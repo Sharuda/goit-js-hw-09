@@ -34,7 +34,9 @@ function handleSubmitForm(event) {
   let inputDelay = Number(delay.value);
   let inputStep = Number(step.value);
   let inputAmount = Number(amount.value);
-
+  if (inputDelay < 0 || inputStep < 0 || inputAmount < 0) {
+    return Notify.failure('Data cannot be less 0');
+  }
   getResult(inputDelay, inputStep, inputAmount);
   event.currentTarget.reset();
 }
